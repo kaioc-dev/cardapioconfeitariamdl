@@ -12,6 +12,7 @@
             --accent-color: #FF1493; /* Deep Pink */
             --bg-color: #FFF0F5; /* Lavender Blush */
             --text-color: #4A4A4A;
+            --desc-color: #7A7A7A; /* Cor mais suave para descrição */
             --card-bg: #FFFFFF;
             --border-radius: 25px;
         }
@@ -26,7 +27,7 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            padding-bottom: 80px; /* Espaço para o botão flutuante */
+            padding-bottom: 80px; 
         }
 
         header {
@@ -90,15 +91,28 @@
             box-shadow: 0 4px 6px rgba(255, 182, 193, 0.2);
         }
 
+        .product-info {
+            flex: 1;
+            padding-right: 15px;
+        }
+
         .product-info h3 {
             font-size: 1.1rem;
             color: var(--text-color);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
-        .product-info p {
+        .product-desc {
+            font-size: 0.85rem;
+            color: var(--desc-color);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .price {
             color: var(--primary-color);
             font-weight: bold;
+            font-size: 1.1rem;
         }
 
         .btn-add {
@@ -106,8 +120,8 @@
             color: white;
             border: none;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             font-size: 1.5rem;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(255, 105, 180, 0.4);
@@ -115,6 +129,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .btn-add:active {
@@ -235,7 +250,7 @@
 
         .btn-checkout {
             width: 100%;
-            background-color: #25D366; /* Cor do WhatsApp */
+            background-color: #25D366; 
             color: white;
             border: none;
             padding: 15px;
@@ -251,11 +266,9 @@
             transform: scale(0.98);
         }
 
-        /* Ocultar endereço se for retirada */
         #endereco-group {
             display: none;
         }
-
     </style>
 </head>
 <body>
@@ -272,13 +285,13 @@
         <h2 class="category-title">Bolos Especiais</h2>
         <div id="bolos-container"></div>
 
-        <h2 class="category-title">Brigadeiros Gourmet</h2>
+        <h2 class="category-title">Centos de Brigadeiro Gourmet</h2>
         <div id="brigadeiros-container"></div>
 
         <h2 class="category-title">Tortas Salgadas</h2>
         <div id="tortas-container"></div>
 
-        <h2 class="category-title">Salgadinhos de Festa (Cento)</h2>
+        <h2 class="category-title">Centos de Salgadinhos</h2>
         <div id="salgados-container"></div>
     </main>
 
@@ -330,27 +343,27 @@
     </div>
 
     <script>
-        // Dados do Cardápio
+        // Dados do Cardápio com Descrições
         const cardapio = {
             bolos: [
-                { id: 'b1', nome: 'Bolo de Chocolate vulcão', preco: 45.00 },
-                { id: 'b2', nome: 'Bolo Red Velvet', preco: 65.00 },
-                { id: 'b3', nome: 'Bolo de Morango com Chantilly', preco: 55.00 }
+                { id: 'b1', nome: 'Bolo de Chocolate Vulcão', descricao: 'Massa fofinha de cacau 50% coberta com uma generosa camada de brigadeiro cremoso e granulados.', preco: 45.00 },
+                { id: 'b2', nome: 'Bolo Red Velvet', descricao: 'Tradicional massa aveludada vermelha com recheio e cobertura rica de cream cheese doce.', preco: 65.00 },
+                { id: 'b3', nome: 'Bolo de Morango com Chantilly', descricao: 'Pão de ló super leve umedecido com calda, recheado com morangos frescos picados e chantilly.', preco: 55.00 }
             ],
             brigadeiros: [
-                { id: 'br1', nome: 'Brigadeiro Tradicional (Unidade)', preco: 2.50 },
-                { id: 'br2', nome: 'Brigadeiro de Ninho com Nutella (Unidade)', preco: 3.50 },
-                { id: 'br3', nome: 'Caixa com 10 Brigadeiros Mistos', preco: 25.00 }
+                { id: 'br1', nome: 'Cento de Brigadeiro Tradicional', descricao: 'O clássico irresistível feito com leite condensado moça, cacau 50% e granulado macio.', preco: 120.00 },
+                { id: 'br2', nome: 'Cento de Ninho com Nutella', descricao: 'A combinação perfeita: massa deliciosa de Leite Ninho recheada com a verdadeira Nutella.', preco: 150.00 },
+                { id: 'br3', nome: 'Cento Misto (Até 2 Sabores)', descricao: 'Monte seu cento escolhendo dois sabores: Brigadeiro, Beijinho, Bicho de pé ou Casadinho.', preco: 130.00 }
             ],
             tortas: [
-                { id: 't1', nome: 'Torta de Frango com Catupiry', preco: 50.00 },
-                { id: 't2', nome: 'Torta Mista (Presunto e Queijo)', preco: 45.00 },
-                { id: 't3', nome: 'Empadão de Camarão', preco: 70.00 }
+                { id: 't1', nome: 'Torta de Frango com Catupiry', descricao: 'Massa podre que derrete na boca, bem recheada com frango desfiado temperadinho e catupiry original.', preco: 50.00 },
+                { id: 't2', nome: 'Torta Mista (Presunto e Queijo)', descricao: 'Clássica e deliciosa, feita com recheio cremoso de presunto magro, mussarela e um toque de orégano.', preco: 45.00 },
+                { id: 't3', nome: 'Empadão de Camarão', descricao: 'Massa artesanal super macia com recheio abundante e cremoso de camarões refogados no azeite.', preco: 70.00 }
             ],
             salgados: [
-                { id: 's1', nome: 'Cento de Coxinha', preco: 40.00 },
-                { id: 's2', nome: 'Cento de Bolinha de Queijo', preco: 40.00 },
-                { id: 's3', nome: 'Cento Misto (Coxinha, Queijo, Kibe)', preco: 45.00 }
+                { id: 's1', nome: 'Cento de Coxinha', descricao: 'Massa de batata sequinha e crocante por fora, macia por dentro, com recheio suculento de frango.', preco: 40.00 },
+                { id: 's2', nome: 'Cento de Bolinha de Queijo', descricao: 'Bolinhas fritas na hora, super recheadas com um mix delicioso de queijos derretidos.', preco: 40.00 },
+                { id: 's3', nome: 'Cento Misto de Salgados', descricao: 'A opção ideal para sua festa: um mix equilibrado de coxinhas, bolinhas de queijo e kibes recheados.', preco: 45.00 }
             ]
         };
 
@@ -362,7 +375,8 @@
                 <div class="product-card">
                     <div class="product-info">
                         <h3>${produto.nome}</h3>
-                        <p>R$ ${produto.preco.toFixed(2).replace('.', ',')}</p>
+                        <p class="product-desc">${produto.descricao}</p>
+                        <p class="price">R$ ${produto.preco.toFixed(2).replace('.', ',')}</p>
                     </div>
                     <button class="btn-add" onclick="adicionarAoCarrinho('${produto.id}', '${produto.nome}', ${produto.preco})">+</button>
                 </div>
@@ -384,7 +398,6 @@
             }
             atualizarCarrinho();
             
-            // Feedback visual rápido
             const btnFloat = document.getElementById('floatingCart');
             btnFloat.style.transform = 'translateX(-50%) scale(1.05)';
             setTimeout(() => { btnFloat.style.transform = 'translateX(-50%) scale(1)'; }, 200);
