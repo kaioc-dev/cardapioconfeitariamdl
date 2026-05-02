@@ -91,6 +91,17 @@
             box-shadow: 0 4px 6px rgba(255, 182, 193, 0.2);
         }
 
+        /* Novo estilo para a imagem do produto */
+        .product-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--secondary-color);
+            flex-shrink: 0; /* Impede que a imagem encolha em telas pequenas */
+        }
+
         .product-info {
             flex: 1;
             padding-right: 15px;
@@ -343,36 +354,37 @@
     </div>
 
     <script>
-        // Dados do Cardápio com Descrições
+        // Dados do Cardápio com Descrições e Imagens (Substitua as URLs das imagens depois)
         const cardapio = {
             bolos: [
-                { id: 'b1', nome: 'Bolo de Chocolate Vulcão', descricao: 'Massa fofinha de cacau 50% coberta com uma generosa camada de brigadeiro cremoso e granulados.', preco: 45.00 },
-                { id: 'b2', nome: 'Bolo Red Velvet', descricao: 'Tradicional massa aveludada vermelha com recheio e cobertura rica de cream cheese doce.', preco: 65.00 },
-                { id: 'b3', nome: 'Bolo de Morango com Chantilly', descricao: 'Pão de ló super leve umedecido com calda, recheado com morangos frescos picados e chantilly.', preco: 55.00 }
+                { id: 'b1', nome: 'Bolo de Chocolate Vulcão', descricao: 'Massa fofinha de cacau 50% coberta com uma generosa camada de brigadeiro cremoso e granulados.', preco: 45.00, imagem: 'https://placehold.co/150x150/FF69B4/FFFFFF?text=Foto+Bolo' },
+                { id: 'b2', nome: 'Bolo Red Velvet', descricao: 'Tradicional massa aveludada vermelha com recheio e cobertura rica de cream cheese doce.', preco: 65.00, imagem: 'https://placehold.co/150x150/FF69B4/FFFFFF?text=Foto+Bolo' },
+                { id: 'b3', nome: 'Bolo de Morango com Chantilly', descricao: 'Pão de ló super leve umedecido com calda, recheado com morangos frescos picados e chantilly.', preco: 55.00, imagem: 'https://placehold.co/150x150/FF69B4/FFFFFF?text=Foto+Bolo' }
             ],
             brigadeiros: [
-                { id: 'br1', nome: 'Cento de Brigadeiro Tradicional', descricao: 'O clássico irresistível feito com leite condensado moça, cacau 50% e granulado macio.', preco: 120.00 },
-                { id: 'br2', nome: 'Cento de Ninho com Nutella', descricao: 'A combinação perfeita: massa deliciosa de Leite Ninho recheada com a verdadeira Nutella.', preco: 150.00 },
-                { id: 'br3', nome: 'Cento Misto (Até 2 Sabores)', descricao: 'Monte seu cento escolhendo dois sabores: Brigadeiro, Beijinho, Bicho de pé ou Casadinho.', preco: 130.00 }
+                { id: 'br1', nome: 'Cento de Brigadeiro Tradicional', descricao: 'O clássico irresistível feito com leite condensado moça, cacau 50% e granulado macio.', preco: 120.00, imagem: 'https://placehold.co/150x150/FFB6C1/4A4A4A?text=Foto+Doce' },
+                { id: 'br2', nome: 'Cento de Ninho com Nutella', descricao: 'A combinação perfeita: massa deliciosa de Leite Ninho recheada com a verdadeira Nutella.', preco: 150.00, imagem: 'https://placehold.co/150x150/FFB6C1/4A4A4A?text=Foto+Doce' },
+                { id: 'br3', nome: 'Cento Misto (Até 2 Sabores)', descricao: 'Monte seu cento escolhendo dois sabores: Brigadeiro, Beijinho, Bicho de pé ou Casadinho.', preco: 130.00, imagem: 'https://placehold.co/150x150/FFB6C1/4A4A4A?text=Foto+Doce' }
             ],
             tortas: [
-                { id: 't1', nome: 'Torta de Frango com Catupiry', descricao: 'Massa podre que derrete na boca, bem recheada com frango desfiado temperadinho e catupiry original.', preco: 50.00 },
-                { id: 't2', nome: 'Torta Mista (Presunto e Queijo)', descricao: 'Clássica e deliciosa, feita com recheio cremoso de presunto magro, mussarela e um toque de orégano.', preco: 45.00 },
-                { id: 't3', nome: 'Empadão de Camarão', descricao: 'Massa artesanal super macia com recheio abundante e cremoso de camarões refogados no azeite.', preco: 70.00 }
+                { id: 't1', nome: 'Torta de Frango com Catupiry', descricao: 'Massa podre que derrete na boca, bem recheada com frango desfiado temperadinho e catupiry original.', preco: 50.00, imagem: 'https://placehold.co/150x150/FF1493/FFFFFF?text=Foto+Torta' },
+                { id: 't2', nome: 'Torta Mista (Presunto e Queijo)', descricao: 'Clássica e deliciosa, feita com recheio cremoso de presunto magro, mussarela e um toque de orégano.', preco: 45.00, imagem: 'https://placehold.co/150x150/FF1493/FFFFFF?text=Foto+Torta' },
+                { id: 't3', nome: 'Empadão de Camarão', descricao: 'Massa artesanal super macia com recheio abundante e cremoso de camarões refogados no azeite.', preco: 70.00, imagem: 'https://placehold.co/150x150/FF1493/FFFFFF?text=Foto+Torta' }
             ],
             salgados: [
-                { id: 's1', nome: 'Cento de Coxinha', descricao: 'Massa de batata sequinha e crocante por fora, macia por dentro, com recheio suculento de frango.', preco: 40.00 },
-                { id: 's2', nome: 'Cento de Bolinha de Queijo', descricao: 'Bolinhas fritas na hora, super recheadas com um mix delicioso de queijos derretidos.', preco: 40.00 },
-                { id: 's3', nome: 'Cento Misto de Salgados', descricao: 'A opção ideal para sua festa: um mix equilibrado de coxinhas, bolinhas de queijo e kibes recheados.', preco: 45.00 }
+                { id: 's1', nome: 'Cento de Coxinha', descricao: 'Massa de batata sequinha e crocante por fora, macia por dentro, com recheio suculento de frango.', preco: 40.00, imagem: 'https://placehold.co/150x150/FFF0F5/FF1493?text=Foto+Salgado' },
+                { id: 's2', nome: 'Cento de Bolinha de Queijo', descricao: 'Bolinhas fritas na hora, super recheadas com um mix delicioso de queijos derretidos.', preco: 40.00, imagem: 'https://placehold.co/150x150/FFF0F5/FF1493?text=Foto+Salgado' },
+                { id: 's3', nome: 'Cento Misto de Salgados', descricao: 'A opção ideal para sua festa: um mix equilibrado de coxinhas, bolinhas de queijo e kibes recheados.', preco: 45.00, imagem: 'https://placehold.co/150x150/FFF0F5/FF1493?text=Foto+Salgado' }
             ]
         };
 
         let carrinho = [];
 
-        // Função para renderizar os produtos na tela
+        // Função para renderizar os produtos na tela incluindo a IMAGEM
         function renderizarCardapio() {
             const gerarHTML = (produto) => `
                 <div class="product-card">
+                    <img src="${produto.imagem}" alt="${produto.nome}" class="product-img">
                     <div class="product-info">
                         <h3>${produto.nome}</h3>
                         <p class="product-desc">${produto.descricao}</p>
