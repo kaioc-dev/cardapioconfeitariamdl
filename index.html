@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confeitaria Modelo</title>
     <style>
-        /* Variáveis de Cores e Estilo - Tema Confeitaria */
+        
         :root {
-            --primary-color: #FF69B4; /* Hot Pink */
-            --secondary-color: #FFB6C1; /* Light Pink */
-            --accent-color: #FF1493; /* Deep Pink */
-            --bg-color: #FFF0F5; /* Lavender Blush */
+            --primary-color: #FF69B4; 
+            --secondary-color: #FFB6C1; 
+            --accent-color: #FF1493; 
+            --bg-color: #FFF0F5; 
             --text-color: #4A4A4A;
-            --desc-color: #7A7A7A; /* Cor mais suave para descrição */
+            --desc-color: #7A7A7A;
             --card-bg: #FFFFFF;
             --border-radius: 25px;
         }
@@ -31,7 +31,7 @@
         }
 
         header {
-            /* Adicionado plano de fundo com imagem e overlay profissional escurecido para destaque do texto */
+            
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('doce.jpg');
             background-size: cover;
             background-position: center;
@@ -94,7 +94,7 @@
             box-shadow: 0 4px 6px rgba(255, 182, 193, 0.2);
         }
 
-        /* Novo estilo para a imagem do produto */
+        
         .product-img {
             width: 80px;
             height: 80px;
@@ -102,7 +102,7 @@
             object-fit: cover;
             margin-right: 15px;
             border: 2px solid var(--secondary-color);
-            flex-shrink: 0; /* Impede que a imagem encolha em telas pequenas */
+            flex-shrink: 0; 
         }
 
         .product-info {
@@ -151,7 +151,7 @@
             background-color: var(--accent-color);
         }
 
-        /* Carrinho Flutuante */
+        
         .floating-cart {
             position: fixed;
             bottom: 20px;
@@ -172,7 +172,7 @@
             text-align: center;
         }
 
-        /* Modal do Carrinho */
+        
         .cart-modal {
             display: none;
             position: fixed;
@@ -237,7 +237,7 @@
             margin: 15px 0;
         }
 
-        /* Formulário */
+        
         .form-group {
             margin-bottom: 15px;
         }
@@ -291,7 +291,7 @@
         <h1>Confeitaria Modelo</h1>
         <p>Adoçando seus melhores momentos!</p>
         <a href="https://instagram.com/rktechcaruaru" target="_blank" class="btn-instagram">
-            📷 @rktechcaruaru
+             @rktechcaruaru
         </a>
     </header>
 
@@ -310,7 +310,7 @@
     </main>
 
     <div class="floating-cart" id="floatingCart" onclick="toggleCart()">
-        🛒 Ver Pedido (<span id="cart-count">0</span>) - R$ <span id="cart-total-float">0,00</span>
+         Ver Pedido (<span id="cart-count">0</span>) - R$ <span id="cart-total-float">0,00</span>
     </div>
 
     <div class="cart-modal" id="cartModal">
@@ -351,13 +351,13 @@
             </div>
 
             <button class="btn-checkout" onclick="enviarWhatsApp()">
-                Finalizar no WhatsApp 📱
+                Finalizar no WhatsApp
             </button>
         </div>
     </div>
 
     <script>
-        // Dados do Cardápio com Descrições e Imagens (Substitua as URLs das imagens depois)
+        
         const cardapio = {
             bolos: [
                 { id: 'b1', nome: 'Bolo de Chocolate Vulcão', descricao: 'Massa fofinha de cacau 50% coberta com uma generosa camada de brigadeiro cremoso e granulados.', preco: 45.00, imagem: 'https://placehold.co/150x150/FF69B4/FFFFFF?text=Foto+Bolo' },
@@ -383,7 +383,7 @@
 
         let carrinho = [];
 
-        // Função para renderizar os produtos na tela incluindo a IMAGEM
+    
         function renderizarCardapio() {
             const gerarHTML = (produto) => `
                 <div class="product-card">
@@ -403,7 +403,7 @@
             document.getElementById('salgados-container').innerHTML = cardapio.salgados.map(gerarHTML).join('');
         }
 
-        // Funções do Carrinho
+        
         function adicionarAoCarrinho(id, nome, preco) {
             const itemExistente = carrinho.find(item => item.id === id);
             if (itemExistente) {
@@ -465,7 +465,7 @@
             }
         }
 
-        // UI toggles
+        
         function toggleCart() {
             const modal = document.getElementById('cartModal');
             if (modal.style.display === 'flex') {
